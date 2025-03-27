@@ -1,0 +1,1 @@
+package br.com.elvisassis.repository;import br.com.elvisassis.model.Person;import org.springframework.data.jpa.repository.JpaRepository;public interface PersonRepository extends JpaRepository<Person, Long> {}
