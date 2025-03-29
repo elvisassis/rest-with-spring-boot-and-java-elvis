@@ -3,7 +3,7 @@ package br.com.elvisassis.unitetests.mapper.mocks;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.elvisassis.data.dto.PersonDto;
+import br.com.elvisassis.data.dto.v1.PersonDTO;
 import br.com.elvisassis.model.Person;
 
 public class MockPerson {
@@ -13,7 +13,7 @@ public class MockPerson {
         return mockEntity(0);
     }
     
-    public PersonDto mockDTO() {
+    public PersonDTO mockDTO() {
         return mockDTO(0);
     }
     
@@ -25,8 +25,8 @@ public class MockPerson {
         return persons;
     }
 
-    public List<PersonDto> mockDTOList() {
-        List<PersonDto> persons = new ArrayList<>();
+    public List<PersonDTO> mockDTOList() {
+        List<PersonDTO> persons = new ArrayList<>();
         for (int i = 0; i < 14; i++) {
             persons.add(mockDTO(i));
         }
@@ -43,8 +43,8 @@ public class MockPerson {
         return person;
     }
 
-    public PersonDto mockDTO(Integer number) {
-        PersonDto personDto = new PersonDto();
+    public PersonDTO mockDTO(Integer number) {
+        PersonDTO personDto = new PersonDTO();
         personDto.setAddress("Address Test" + number);
         personDto.setFirstName("First Name Test" + number);
         personDto.setGender(((number % 2)==0) ? "Male" : "Female");
