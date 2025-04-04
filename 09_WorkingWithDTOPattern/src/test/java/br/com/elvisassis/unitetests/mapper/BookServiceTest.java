@@ -1,0 +1,1 @@
+package br.com.elvisassis.unitetests.mapper;public class BookServiceTest {}
