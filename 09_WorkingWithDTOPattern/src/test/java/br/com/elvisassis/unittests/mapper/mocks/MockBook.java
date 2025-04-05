@@ -1,4 +1,4 @@
-package br.com.elvisassis.unitetests.mapper.mocks;
+package br.com.elvisassis.unittests.mapper.mocks;
 
 import br.com.elvisassis.controlleres.BookController;
 import br.com.elvisassis.data.dto.BookDTO;

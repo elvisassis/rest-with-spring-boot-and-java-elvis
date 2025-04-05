@@ -1,4 +1,4 @@
-package br.com.elvisassis.unitetests.mapper;
+package br.com.elvisassis.unittests.mapper;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -9,7 +9,7 @@ import br.com.elvisassis.data.dto.PersonDTO;
 import static br.com.elvisassis.mapper.ObjectMapper.*;
 
 import br.com.elvisassis.model.Person;
-import br.com.elvisassis.unitetests.mapper.mocks.MockPerson;
+import br.com.elvisassis.unittests.mapper.mocks.MockPerson;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

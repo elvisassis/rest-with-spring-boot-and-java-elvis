@@ -1,4 +1,4 @@
-package br.com.elvisassis.unitetests.mapper.mocks;
+package br.com.elvisassis.unittests.mapper.mocks;
 
 import java.util.ArrayList;
 import java.util.List;
