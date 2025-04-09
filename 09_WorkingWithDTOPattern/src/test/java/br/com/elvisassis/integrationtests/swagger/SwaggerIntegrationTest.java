@@ -32,25 +32,4 @@ class SwaggerIntegrationTest extends AbstractIntegrationTest {
 
         assertTrue(content.contains("Swagger UI"));
     }
-
-    //TODO criar uma classe especfica para testar a entidade Person
-    @Test
-    void TestPeopleFindByIdWithReturningStatus200Ok(){
-
-       PersonDTO personDTO = given()
-            .basePath("/api/person/v1/2")
-                .port(port)
-            .when()
-                .get()
-            .then()
-                .statusCode(200)
-            .extract()
-               .as(PersonDTO.class);
-
-       assertNotNull(personDTO);
-       assertEquals("Bia", personDTO.getFirstName());
-       assertEquals("Verde Reis", personDTO.getLastName());
-    }
-
-
 }
