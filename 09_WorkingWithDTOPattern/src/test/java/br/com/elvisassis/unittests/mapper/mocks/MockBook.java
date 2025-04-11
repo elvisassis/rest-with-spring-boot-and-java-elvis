@@ -61,7 +61,7 @@ public class MockBook {
 
     private void addHateoasLinks(BookDTO bookDTO) {
         bookDTO.add(linkTo(methodOn(BookController.class).findById(bookDTO.getId())).withSelfRel().withType("GET"));
-        bookDTO.add(linkTo(methodOn(BookController.class).findAll()).withRel("findAll").withType("GET"));
+        bookDTO.add(linkTo(methodOn(BookController.class).findAll(1, 10, "asc")).withRel("findAll").withType("GET"));
         bookDTO.add(linkTo(methodOn(BookController.class).create(bookDTO)).withRel("create").withType("POST"));
         bookDTO.add(linkTo(methodOn(BookController.class).update(bookDTO)).withRel("update").withType("PUT"));
         bookDTO.add(linkTo(methodOn(BookController.class).delete(bookDTO.getId())).withRel("delete").withType("DELETE"));
