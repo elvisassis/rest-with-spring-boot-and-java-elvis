@@ -199,6 +199,17 @@
 			<resource>
 				<directory>src/main/resources</directory>
 				<filtering>true</filtering>
+				<excludes>
+					<exclude>**/*.jasper</exclude>
+				</excludes>
+			</resource>
+			<!-- Segundo bloco: inclui os .jasper com filtering desativado -->
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>false</filtering>
+				<includes>
+					<include>**/*.jasper</include>
+				</includes>
 			</resource>
 		</resources>
 

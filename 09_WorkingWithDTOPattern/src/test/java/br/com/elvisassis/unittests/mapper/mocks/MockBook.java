@@ -1,6 +1,6 @@
 package br.com.elvisassis.unittests.mapper.mocks;
 
-import br.com.elvisassis.controlleres.BookController;
+import br.com.elvisassis.controllers.BookController;
 import br.com.elvisassis.data.dto.BookDTO;
 import br.com.elvisassis.model.Book;
 
