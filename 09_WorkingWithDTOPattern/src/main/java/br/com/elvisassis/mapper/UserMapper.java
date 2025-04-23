@@ -1,0 +1,1 @@
+package br.com.elvisassis.mapper;public class UserMapper {}
