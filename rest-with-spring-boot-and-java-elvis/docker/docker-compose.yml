@@ -1,0 +1,38 @@
+version: "3.4"
+services:
+  db:
+    image: mysql:9.1.0
+    command: mysqld --default_authentication_plugin=mysql_native_password
+    restart: always
+    environment:
+      tz: America/Sao_Paulo
+      MYSQL_ROOT_PASSWORD: 123
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: 123
+      MYSQL_DATABASE: rest_with_spring_boot_elvis
+    ports:
+      - "3308:3306"
+    expose:
+      - 3306
+    networks:
+      - elvis-network
+  rest_with_spring_boot_elvis:
+    image: elvisassis/rest_with_spring_boot_elvis
+    restart: always
+    build: ./09_WorkingWithDTOPattern
+    working_dir: /09_WorkingWithDTOPattern
+    environment:
+      tz: America/Sao_Paulo
+      SPRING.DATASOURCE.URL: jdbc:mysql://db:3306/rest_with_spring_boot_elvis?useTimezone=true&serverTimezone=UTC
+      SPRING.DATASOURCE.USERNAME: root
+      SPRING.DATASOURCE.PASSWORD: 123
+    command: mvn spring-boot:run
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    networks:
+      - elvis-network
+networks:
+  elvis-network:
+    driver: bridge
