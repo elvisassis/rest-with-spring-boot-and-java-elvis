@@ -1,1 +1,0 @@
-package br.com.elvisassis.exception;import java.util.Date;public record ExceptionResponse (Date timeStamp, String message, String details) {}

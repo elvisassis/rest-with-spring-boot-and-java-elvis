@@ -1,1 +1,0 @@
-package br.com.elvisassis.integrationtests.dto.wrappers.json;import com.fasterxml.jackson.annotation.JsonProperty;import lombok.Data;import java.io.Serializable;@Datapublic class WrapperPersonDTO implements Serializable {  private static final long serialVersionUID = 1l;  @JsonProperty("_embedded")  private PersonEmbeddedDTO embedded;}

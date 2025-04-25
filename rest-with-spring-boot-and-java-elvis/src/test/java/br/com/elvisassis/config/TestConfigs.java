@@ -1,1 +1,0 @@
-package br.com.elvisassis.config;public interface TestConfigs {    int SERVER_PORT = 8888;    String HEADER_PARAM_AUTHORIZATION = "Authorization";    String HEADER_PARAM_ORIGIN = "Origin";    String ORIGIN_ERUDIO = "https://erudio.com.br";    String ORIGIN_SEMERU = "https://semeru.com.br";    String ORIGIN_LOCAL = "http://localhost:8888";}

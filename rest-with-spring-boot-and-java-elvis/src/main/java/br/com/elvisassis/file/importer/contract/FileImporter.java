@@ -1,1 +1,0 @@
-package br.com.elvisassis.file.importer.contract;import br.com.elvisassis.data.dto.PersonDTO;import java.io.InputStream;import java.util.List;public interface FileImporter {    List<PersonDTO> importerFile(InputStream inputStream) throws Exception;}
