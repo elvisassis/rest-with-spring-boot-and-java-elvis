@@ -1,8 +1,6 @@
-version: "3.4"
 services:
   db:
     image: mysql:9.1.0
-    command: mysqld --default_authentication_plugin=mysql_native_password
     restart: always
     environment:
       tz: America/Sao_Paulo
@@ -19,8 +17,8 @@ services:
   rest_with_spring_boot_elvis:
     image: elvisassis/rest_with_spring_boot_elvis
     restart: always
-    build: ./09_WorkingWithDTOPattern
-    working_dir: /09_WorkingWithDTOPattern
+    build: ../
+    working_dir: /rest_with_spring_boot_elvis
     environment:
       tz: America/Sao_Paulo
       SPRING.DATASOURCE.URL: jdbc:mysql://db:3306/rest_with_spring_boot_elvis?useTimezone=true&serverTimezone=UTC
@@ -28,7 +26,7 @@ services:
       SPRING.DATASOURCE.PASSWORD: 123
     command: mvn spring-boot:run
     ports:
-      - "3000:3000"
+      - "9000:9000"
     depends_on:
       - db
     networks:
