@@ -17,7 +17,6 @@ services:
   rest_with_spring_boot_elvis:
     image: elvisassis/rest_with_spring_boot_elvis
     restart: always
-    build: ../
     working_dir: /rest_with_spring_boot_elvis
     environment:
       tz: America/Sao_Paulo
@@ -31,6 +30,20 @@ services:
       - db
     networks:
       - elvis-network
+
+  portainer:
+    image: portainer/portainer-ce:latest
+    restart: always
+    ports:
+      - 9001:9000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    networks:
+      - elvis-network
+volumes:
+  portainer_data:
+
 networks:
   elvis-network:
     driver: bridge

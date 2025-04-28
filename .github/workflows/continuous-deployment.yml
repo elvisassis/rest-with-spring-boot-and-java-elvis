@@ -20,6 +20,18 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
 
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4 # More information on this action can be found below in the 'AWS Credentials' section
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key-id: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
       - name: Setup Java 21
         uses: actions/setup-java@v4
         with:
@@ -35,6 +47,14 @@ jobs:
         working-directory: ./docker/
         run: docker build -f ../Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/rest_with_spring_boot_elvis:latest ..
 
+
+      - name: Tag and Push Docker Image to Container Registry - ECR
+        run: |
+          docker tag ${{ secrets.DOCKER_USERNAME }}/rest_with_spring_boot_elvis:latest ${{ secrets.IMAGE_REPO_URL }}:latest
+          docker tag ${{ secrets.DOCKER_USERNAME }}/rest_with_spring_boot_elvis:latest ${{ secrets.IMAGE_REPO_URL }}:${{ github.run_id }}
+          
+          docker push ${{ secrets.IMAGE_REPO_URL }}:latest
+          docker push ${{ secrets.IMAGE_REPO_URL }}:${{ github.run_id }}
 
       - name: Push to Docker Hub Container Registry
         run: |
