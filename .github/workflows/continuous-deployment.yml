@@ -64,7 +64,7 @@ jobs:
 
       - name: Deploy to Google Cloud Run
         run: |
-          google run deploy rest-with-spring-boot-elvis \
+          gcloud run deploy rest-with-spring-boot-elvis \
             --image ${{ secrets.REGISTRY_INFO }}/rest_with_spring_boot_elvis:latest \
             --region us-central1 \
             --platform managed \
