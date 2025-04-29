@@ -38,7 +38,7 @@ services:
       - 9001:9000
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - portainer_data:/data
+      - /opt/portainer/data:/data
     networks:
       - elvis-network
 volumes:
