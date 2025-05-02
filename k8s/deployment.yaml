@@ -1,0 +1,90 @@
+##### Deployment Mysql
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+        - name: mysql
+          image: mysql:9.1.0
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "123"
+            - name: MYSQL_USER
+              value: "admin"
+            - name: MYSQL_PASSWORD
+              value: "123"
+            - name: MYSQL_DATABASE
+              value: "rest_with_spring_boot_elvis"
+            - name: TZ
+              value: "America/Sao_Paulo"
+          ports:
+            - containerPort: 3306
+---
+### Service Mysql
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+spec:
+  selector:
+    app: mysql
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306
+
+---
+##### Deployment spring boot
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-boot
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: spring-boot
+  template:
+    metadata:
+      labels:
+        app: spring-boot
+    spec:
+      containers:
+        - name: spring-boot
+          image: elvisassis/rest_with_spring_boot_elvis:v2
+#          imagePullPolicy: Always
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:mysql://mysql:3306/rest_with_spring_boot_elvis?useTimezone=true&serverTimezone=UTC"
+            - name: SPRING_DATASOURCE_USERNAME
+              value: "root"
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: "123"
+            - name: TZ
+              value: "America/Sao_Paulo"
+          ports:
+            - containerPort: 9000
+---
+### Service spring
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-boot
+spec:
+  selector:
+    app: spring-boot
+  ports:
+    - port: 9000
+      targetPort: 9000
+      nodePort: 30000
+  type: NodePort

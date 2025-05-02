@@ -15,7 +15,7 @@ services:
     networks:
       - elvis-network
   rest_with_spring_boot_elvis:
-    image: elvisassis/rest_with_spring_boot_elvis
+    image: elvisassis/rest_with_spring_boot_elvis:v2
     restart: always
     working_dir: /rest_with_spring_boot_elvis
     environment:
