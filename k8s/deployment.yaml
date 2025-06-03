@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: mysql
-          image: mysql:9.1.0
+          image: mysql:9.3.0
           env:
             - name: MYSQL_ROOT_PASSWORD
               value: "123"
@@ -61,8 +61,8 @@ spec:
     spec:
       containers:
         - name: spring-boot
-          image: elvisassis/rest_with_spring_boot_elvis:v2
-#          imagePullPolicy: Always
+          image: elvisassis/rest_with_spring_boot_elvis:v1
+#          imagePullPolicy: Never
           env:
             - name: SPRING_DATASOURCE_URL
               value: "jdbc:mysql://mysql:3306/rest_with_spring_boot_elvis?useTimezone=true&serverTimezone=UTC"
@@ -86,5 +86,5 @@ spec:
   ports:
     - port: 9000
       targetPort: 9000
-#      nodePort: 30000'
+      nodePort: 30000
   type: LoadBalancer
